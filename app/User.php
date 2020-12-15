@@ -37,14 +37,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function posts()
+    public function profilePicture()
     {
-        return $this->hasMany('App\Post');
+        return $this->hasOne('App\ProfilePicture');
     }
-
+    
     public function roles()
     {
         return $this->belongsToMany('App\Role');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
     }
 
     public function comments()
