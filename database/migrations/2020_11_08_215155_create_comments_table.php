@@ -20,7 +20,6 @@ class CreateCommentsTable extends Migration
             $table->foreignId('post_id')->constrained('posts')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->mediumText('body');
-            $table->string('attachment')->default('notes.jpg');
             $table->timestamps();
         });
     }

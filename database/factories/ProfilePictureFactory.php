@@ -8,6 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(ProfilePicture::class, function (Faker $faker) {
     return [
         'description' => $faker->sentence($nbWords = 6),
-        'user_id' => App\User::inRandomOrder()->first()->unique()->id,
+        'user_id' => factory(App\User::class)->create()->id,
     ];
 });
