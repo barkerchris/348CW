@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Post {{ $post->id }}')
+@section('title', '{{ $post->id }}')
 
 @section('content')
     <div class="card m-4 w-75 mx-auto">
@@ -12,5 +12,13 @@
         <div class="card-footer text-muted">
             Attachments
         </div>
+    </div>
+    <div class="d-flex w-75 mx-auto">
+        <form method="POST"
+            action="{{ route('posts.destroy', ['post' => $post]) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
     </div>
 @endsection

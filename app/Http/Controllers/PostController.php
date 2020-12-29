@@ -36,18 +36,28 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request['title']);
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required',
+        ]);
+
+        $p = new Post;
+        $p->title = $validatedData['title'];
+        $p->body = $validatedData['body'];
+        $p->user_id = 5;
+        $p->save();
+
+        return redirect()->route('posts.index')->with('message', 'Post was created.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::findOrFail($id);
         return view('posts.show', ['post' => $post]);
     }
 
@@ -77,11 +87,12 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index')->with('message', 'Post was deleted.');
     }
 }
