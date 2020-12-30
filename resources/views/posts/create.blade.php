@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="d-flex justify-content-center">
-        <h1>Create post:</h1>
+    <h1>Create post:</h1>
 </div>
 <div class="card m-4 w-75 mx-auto">   
     <div class="card-body"> 
@@ -22,7 +22,7 @@
                 <label for="files_id">Attachments:</label>
                 <input type="file" class="form-control-file" id="files_id" name="files">
               </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">SUBMIT</button>
         </form>
     </div>
 </div>

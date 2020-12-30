@@ -7,7 +7,7 @@
         <h1>Posts:</h1>
     </div>
     <div class="d-flex w-75 mx-auto">
-        <a class="btn btn-primary btn-lg btn-block" href="{{ route('posts.create') }}" role="button">Create post</a>
+        <a class="btn btn-primary btn-lg btn-block" href="{{ route('posts.create') }}" role="button">CREATE</a>
     </div>
     @if(count($posts) > 0)
         @foreach ($posts as $post)
