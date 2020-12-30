@@ -19,12 +19,10 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/posts', 'PostController@index')->name('posts.index');
-Route::get('/posts/create', 'PostController@create')->name('posts.create');
-Route::post('/posts', 'PostController@store')->name('posts.store');
-Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
-Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit');
-Route::patch('/posts/{post}/edit', 'PostController@update')->name('posts.update');
-Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.destroy');
+Route::get('/posts', 'PostController@index')->name('posts.index')->middleware(['auth', 'verified']);
+Route::get('/posts/create', 'PostController@create')->name('posts.create')->middleware(['auth', 'verified']);
+Route::post('/posts', 'PostController@store')->name('posts.store')->middleware(['auth', 'verified']);
+Route::get('/posts/{post}', 'PostController@show')->name('posts.show')->middleware(['auth', 'verified']);
+Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit')->middleware(['auth', 'verified']);
+Route::patch('/posts/{post}/edit', 'PostController@update')->name('posts.update')->middleware(['auth', 'verified']);
+Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.destroy')->middleware(['auth', 'verified']);
