@@ -9,7 +9,10 @@
     <div class="card m-4 w-75 mx-auto">
         <div class="card-body">
             <h5 class="card-title">{{ $post->title }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ $post->user->name }}   {{ $post->created_at->diffForHumans() }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">
+                <img src="{{ asset('/storage/images/'.$post->user->profilePicture->avatar) }}" class="img-thumbnail" alt="{{ $post->user->profilePicture->description }}" style="width:50px; height:50px;">
+                {{ $post->user->name }}   {{ $post->created_at->diffForHumans() }}
+            </h6>
             <p class="card-text">{{ $post->body }}</p>
         </div>
         <div class="card-footer text-muted">
