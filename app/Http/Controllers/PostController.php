@@ -44,7 +44,7 @@ class PostController extends Controller
         $p = new Post;
         $p->title = $validatedData['title'];
         $p->body = $validatedData['body'];
-        $p->user_id = 5;
+        $p->user_id = auth()->user()->id;
         $p->save();
 
         return redirect()->route('posts.index')->with('message', 'Post was created.');
@@ -88,7 +88,6 @@ class PostController extends Controller
 
         $post->title = $validatedData['title'];
         $post->body = $validatedData['body'];
-        $post->user_id = 5;
         $post->save();
 
         return redirect()->route('posts.index')->with('message', 'Post was edited.');
