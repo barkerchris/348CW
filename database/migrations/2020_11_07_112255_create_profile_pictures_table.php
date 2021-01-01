@@ -15,8 +15,8 @@ class CreateProfilePicturesTable extends Migration
     {
         Schema::create('profile_pictures', function (Blueprint $table) {
             $table->id();
-            $table->string('avatar')->default('user.png');
-            $table->string('description');
+            $table->string('avatar')->default('default.jpg');
+            $table->string('description')->default('Profile Picture.');
             $table->foreignId('user_id')->constrained('users')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

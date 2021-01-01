@@ -15,7 +15,7 @@ class CreateAttachmentsTable extends Migration
     {
         Schema::create('attachments', function (Blueprint $table) {
             $table->id();
-            $table->string('url')->default('image.jpg');
+            $table->string('url')->default('deafult.txt');
             $table->morphs('attachmentable');
             $table->timestamps();
         });

@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label for="files_id">Attachments:</label>
                 <input type="file" class="form-control-file" id="files_id" name="files" value="{{ $post->attachments }}">
-              </div>
+            </div>
             <button type="submit" class="btn btn-primary btn-lg btn-block">SUBMIT</button>
         </form>
     </div>

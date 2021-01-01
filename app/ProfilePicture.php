@@ -12,7 +12,7 @@ class ProfilePicture extends Model
      * @var array
      */
     protected $fillable = [
-        'description',
+        'avatar', 'description',
     ];
 
     public function user()
