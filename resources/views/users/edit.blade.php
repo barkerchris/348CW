@@ -33,6 +33,12 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">SUBMIT</button>
             </form>
+            <br>
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-link" href="{{ route('password.request') }}">
+                    {{ __('Forgot Your Password?') }}
+                </a>
+            </div>
         </div>
     </div>
 @endsection
