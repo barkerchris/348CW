@@ -57,6 +57,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         return view('users.edit', ['user' => $user]);
     }
 
@@ -76,7 +77,7 @@ class UserController extends Controller
         $user->name = $validatedData['name'];
         $user->save();
 
-        return redirect()->route('users.edit', ['user' => $user])->with('message', 'User was edited.');
+        return redirect()->back()->with('message', 'User was edited.');
     }
 
     /**
@@ -87,6 +88,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $this->authorize('delete', $user);
         $user->delete();
         return redirect()->route('welcome')->with('message', 'User was deleted.');
     }

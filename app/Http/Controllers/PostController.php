@@ -25,6 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        $this->authorize('create');
         return view('posts.create');
     }
 
@@ -69,6 +70,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $this->authorize('update', $post);
         return view('posts.edit', ['post' => $post]);
     }
 
@@ -101,6 +103,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
         $post->delete();
         return redirect()->route('posts.index')->with('message', 'Post was deleted.');
     }

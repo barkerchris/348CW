@@ -6,9 +6,13 @@
     <div class="d-flex justify-content-center">
         <h1>Posts:</h1>
     </div>
-    <div class="d-flex w-75 mx-auto">
-        <a class="btn btn-primary btn-lg btn-block" href="{{ route('posts.create') }}" role="button">CREATE</a>
-    </div>
+
+    @can('create', App\Post::class)
+        <div class="d-flex w-75 mx-auto">
+            <a class="btn btn-primary btn-lg btn-block" href="{{ route('posts.create') }}" role="button">CREATE</a>
+        </div>
+    @endcan
+
     @if(count($posts) > 0)
         @foreach ($posts as $post)
             <div class="card m-4 w-75 mx-auto">
@@ -27,6 +31,7 @@
             <h2>No posts</h2>
         </div>
     @endif
+    
     <div class="pagination justify-content-center">
         {{ $posts->links() }}
     </div>

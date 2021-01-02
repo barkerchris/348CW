@@ -3,9 +3,10 @@
 @section('title', 'Profile')
 
 @section('content')
-<div class="d-flex justify-content-center">
-    <h1>Profile:</h1>
-</div>
+    <div class="d-flex justify-content-center">
+        <h1>Profile:</h1>
+    </div>
+
     <div class="card m-4 w-75 mx-auto">
         <div class="card-body">
             <p class="card-text mx-auto">
@@ -19,9 +20,14 @@
             </p>
         </div>
     </div>
+
+    @can('update', $user)
     <div class="d-flex w-75 mx-auto">
         <a class="btn btn-primary btn-lg btn-block" href="{{ route('users.edit', ['user' => $user]) }}" role="button">EDIT</a>
     </div>
+    @endcan
+    
+    @can('delete', $user)
     <div class="card m-4 w-75 mx-auto">
         <form method="POST" action="{{ route('users.destroy', ['user' => $user]) }}">
             @csrf
@@ -29,4 +35,5 @@
             <button type="submit" class="btn btn-danger btn-lg btn-block">DELETE</button>
         </form>
     </div>
+    @endcan
 @endsection
