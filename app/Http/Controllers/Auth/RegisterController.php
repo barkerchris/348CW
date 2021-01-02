@@ -75,6 +75,8 @@ class RegisterController extends Controller
         $pp->user_id = $user->id;
         $pp->save();
 
+        $user->roles = Role::where('title', 'Student');
+
         return $user;
     }
 }
