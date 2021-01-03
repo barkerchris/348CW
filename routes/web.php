@@ -38,3 +38,5 @@ Route::post('/attachments', 'AttachmentController@store')->name('attachments.sto
 Route::get('/attachments/{id}/{type}/create', 'AttachmentController@create')->name('attachments.create')->middleware(['auth', 'verified']);
 Route::get('/attachments/{attachment}', 'AttachmentController@show')->name('attachments.show')->middleware(['auth', 'verified']);
 Route::delete('/attachments/{id}/{type}/{attachment}', 'AttachmentController@destroy')->name('attachments.destroy')->middleware(['auth', 'verified']);
+
+Route::get('/posts/{post}/comments', 'CommentController@page')->name('comments.page')->middleware(['auth', 'verified']);

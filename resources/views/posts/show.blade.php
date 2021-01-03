@@ -71,4 +71,7 @@
             </div>
         @endif
     </div>
+    <div class="d-flex m-4">
+        <a class="btn btn-primary btn-lg btn-block" href="{{ route('comments.page', ['post' => $post]) }}" role="button">VIEW COMMENTS</a>
+    </div>
 @endsection
