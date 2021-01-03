@@ -22,6 +22,7 @@ class UserTableSeeder extends Seeder
         ]);
         $admin->roles()->attach($adminRole);
         $admin->profilePicture()->save(App\ProfilePicture::create(['user_id' => $admin->id]));
+        $admin->markEmailAsVerified();
 
         $lecturer = App\User::create([
             'name' => 'Lecturer',
@@ -30,6 +31,7 @@ class UserTableSeeder extends Seeder
         ]);
         $lecturer->roles()->attach($lecturerRole);
         $lecturer->profilePicture()->save(App\ProfilePicture::create(['user_id' => $lecturer->id]));
+        $lecturer->markEmailAsVerified();
 
         $helper = App\User::create([
             'name' => 'Helper',
@@ -39,6 +41,7 @@ class UserTableSeeder extends Seeder
         $helper->roles()->attach($lecturerRole);
         $helper->roles()->attach($studentRole);
         $helper->profilePicture()->save(App\ProfilePicture::create(['user_id' => $helper->id]));
+        $helper->markEmailAsVerified();
 
         $student = App\User::create([
             'name' => 'Student',
@@ -47,5 +50,6 @@ class UserTableSeeder extends Seeder
         ]);
         $student->roles()->attach($studentRole);
         $student->profilePicture()->save(App\ProfilePicture::create(['user_id' => $student->id]));
+        $student->markEmailAsVerified();
     }
 }

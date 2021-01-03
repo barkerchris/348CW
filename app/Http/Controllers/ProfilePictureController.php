@@ -70,6 +70,8 @@ class ProfilePictureController extends Controller
      */
     public function update(Request $request, ProfilePicture $profilePicture)
     {
+        $this->authorize('update', $profilePicture);
+
         if ($request->hasFile('image')) {
             if ($request->file('image')->isValid()) {
                 $validatedData = $request->validate([

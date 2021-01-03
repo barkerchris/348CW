@@ -9,7 +9,7 @@
     
     <div class="card m-4 w-75 mx-auto">   
         <div class="card-body"> 
-            <form method="POST" action="{{ route('posts.store') }}">
+            <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="title_id">Title:</label>
@@ -17,11 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label for="body_id">Body:</label>
-                    <input type="text" class="form-control" id="body_id" name="body" placeholder="Enter body" value="{{ old('body') }}">
-                </div>
-                <div class="form-group">
-                    <label for="files_id">Attachments:</label>
-                    <input type="file" class="form-control-file" id="files_id" name="files">
+                    <textarea type="text" class="form-control" id="body_id" name="body" placeholder="Enter body" value="{{ old('body') }}" rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">SUBMIT</button>
             </form>

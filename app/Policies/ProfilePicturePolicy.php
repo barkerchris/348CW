@@ -55,7 +55,7 @@ class ProfilePicturePolicy
     {
         $admin = false;
         foreach ($user->roles as $role) {
-            if ($role->title === 'Admin') {
+            if ($role->title === "Admin") {
                 $admin = true;
             }
         }

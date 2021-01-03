@@ -14,7 +14,7 @@
     @endcan
 
     @if(count($posts) > 0)
-        @foreach ($posts as $post)
+        @foreach($posts as $post)
             <div class="card m-4 w-75 mx-auto">
                 <div class="card-body">
                     <h5 class="card-title"><a href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }}</a></h5>
@@ -27,6 +27,11 @@
                     </h6>
                     <p class="card-text">{{ $post->body }}</p>
                 </div>
+                @if($post->attachments->isNotEmpty())
+                    <div class="card-footer text-muted">
+                        Attachments
+                    </div>
+                @endif
             </div>
         @endforeach
     @else

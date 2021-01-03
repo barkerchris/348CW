@@ -44,14 +44,13 @@ class PostPolicy
         $lecturer = false;
         $admin = false;
         foreach ($user->roles as $role) {
-            if ($role->title === 'Admin') {
+            if ($role->title == "Admin") {
                 $admin = true;
-            }
-            if ($role->title === 'Teacher') {
+            } elseif ($role->title === "Teacher") {
                 $lecturer = true;
             }
         }
-        return $lecturer || $admin;
+        return ($lecturer || $admin);
     }
 
     /**
@@ -65,7 +64,7 @@ class PostPolicy
     {
         $admin = false;
         foreach ($user->roles as $role) {
-            if ($role->title === 'Admin') {
+            if ($role->title === "Admin") {
                 $admin = true;
             }
         }
@@ -83,7 +82,7 @@ class PostPolicy
     {
         $admin = false;
         foreach ($user->roles as $role) {
-            if ($role->title === 'Admin') {
+            if ($role->title === "Admin") {
                 $admin = true;
             }
         }

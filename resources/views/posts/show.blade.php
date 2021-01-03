@@ -7,33 +7,68 @@
         <h1>Post {{ $post->id }}:</h1>
     </div>
 
-    <div class="card m-4 w-75 mx-auto">
-        <div class="card-body">
-            <h5 class="card-title">{{ $post->title }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">
-                <img src="{{ asset('/storage/images/'.$post->user->profilePicture->avatar) }}" class="img-thumbnail" alt="{{ $post->user->profilePicture->description }}" style="width:50px; height:50px;">
-                {{ $post->user->name }}   {{ $post->created_at->diffForHumans() }}
-            </h6>
-            <p class="card-text">{{ $post->body }}</p>
-        </div>
-        <div class="card-footer text-muted">
-            Attachments
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col">
+                @can('update', $post)
+                    <div class="d-flex">
+                        <a class="btn btn-primary btn-lg btn-block" href="{{ route('attachments.create', ['id' => $post->id, 'type' => Post::class]) }}" role="button">ADD ATTACHMENTS</a>
+                    </div>
+                @endcan    
+            </div>
+            <div class="col">
+                @can('update', $post)
+                    <div class="d-flex">
+                        <a class="btn btn-primary btn-lg btn-block" href="{{ route('posts.edit', ['post' => $post]) }}" role="button">EDIT POST</a>
+                    </div>
+                @endcan
+            </div>
+            <div class="col">
+                @can('delete', $post)
+                    <div class="card mx-auto">
+                        <form method="POST" action="{{ route('posts.destroy', ['post' => $post]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-lg btn-block">DELETE POST</button>
+                        </form>
+                    </div>
+                @endcan
+            </div>
         </div>
     </div>
 
-    @can('update', $post)
-    <div class="d-flex w-75 mx-auto">
-        <a class="btn btn-primary btn-lg btn-block" href="{{ route('posts.edit', ['post' => $post]) }}" role="button">EDIT</a>
-    </div>
-    @endcan
-    
-    @can('delete', $post)
-        <div class="card m-4 w-75 mx-auto">
-            <form method="POST" action="{{ route('posts.destroy', ['post' => $post]) }}">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-lg btn-block">DELETE</button>
-            </form>
+    <div class="card m-4">
+        <div class="card-body">
+            <h4 class="card-title">{{ $post->title }}</h4>
+            <h6 class="card-subtitle text-muted">
+                <a href="{{ route('users.show', ['user' => $post->user]) }}">
+                    <img src="{{ asset('/storage/images/'.$post->user->profilePicture->avatar) }}" class="img-thumbnail" alt="{{ $post->user->profilePicture->description }}" style="width:50px; height:50px;">
+                    {{ $post->user->name }}
+                </a>
+                {{ $post->created_at->diffForHumans() }}
+            </h6>
+            <p class="card-text mt-3">{{ $post->body }}</p>
         </div>
-    @endcan
+
+        @if($post->attachments->isNotEmpty())
+            <div class="card-footer text-muted">
+                Attachments:<br>
+                @foreach($post->attachments as $attachment)
+                    <div class="d-inline-flex">
+                        <a href="{{ route('attachments.show', ['attachment' => $attachment]) }}">
+                            <h5>{{ $attachment->file }}</h5>
+                        </a>
+                        @can('delete', $post)
+                            <form method="POST" action="{{ route('attachments.destroy', ['id' => $post->id, 'type' => Post::class, 'attachment' => $attachment]) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-link text-danger p-0 ml-4">DELETE</button>
+                            </form>
+                        @endcan
+                    </div>
+                    <br>
+                @endforeach
+            </div>
+        @endif
+    </div>
 @endsection

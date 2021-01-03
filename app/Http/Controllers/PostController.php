@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $this->authorize('create');
+        $this->authorize('create', Post::class);
         return view('posts.create');
     }
 
@@ -37,6 +37,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Post::class);
+
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required',
@@ -83,6 +85,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $this->authorize('update', $post);
+
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required',

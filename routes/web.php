@@ -32,6 +32,9 @@ Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit')->mid
 Route::patch('/users/{user}/edit', 'UserController@update')->name('users.update')->middleware(['auth', 'verified']);
 Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy')->middleware(['auth', 'verified']);
 
-
 Route::patch('/profilePictures/{profilePicture}/edit', 'ProfilePictureController@update')->name('profilePictures.update')->middleware(['auth', 'verified']);
-Route::delete('/profilePictures/{profilePicture}', 'ProfilePictureController@destroy')->name('profilePictures.destroy')->middleware(['auth', 'verified']);
+
+Route::post('/attachments', 'AttachmentController@store')->name('attachments.store')->middleware(['auth', 'verified']);
+Route::get('/attachments/{id}/{type}/create', 'AttachmentController@create')->name('attachments.create')->middleware(['auth', 'verified']);
+Route::get('/attachments/{attachment}', 'AttachmentController@show')->name('attachments.show')->middleware(['auth', 'verified']);
+Route::delete('/attachments/{id}/{type}/{attachment}', 'AttachmentController@destroy')->name('attachments.destroy')->middleware(['auth', 'verified']);
