@@ -9,7 +9,7 @@
     
     <div class="card m-4 w-75 mx-auto">   
         <div class="card-body"> 
-            <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('posts.store') }}">
                 @csrf
                 <div class="form-group">
                     <label for="title_id">Title:</label>

@@ -40,8 +40,8 @@ class PostController extends Controller
         $this->authorize('create', Post::class);
 
         $validatedData = $request->validate([
-            'title' => 'required|max:255',
-            'body' => 'required',
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
         ]);
 
         $p = new Post;

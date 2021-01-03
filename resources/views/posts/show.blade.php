@@ -71,7 +71,50 @@
             </div>
         @endif
     </div>
-    <div class="d-flex m-4">
+
+    {{-- <div class="d-flex m-4">
         <a class="btn btn-primary btn-lg btn-block" href="{{ route('comments.page', ['post' => $post]) }}" role="button">VIEW COMMENTS</a>
+    </div> --}}
+
+    <div id="root">
+        <div class="card m-4 w-75 mx-auto" v-for="comment in comments">
+            <div class="card-body">
+                @{{ comment.body }}
+            </div>
+        </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0-0/axios.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#root",
+            data: {
+                comments: [],
+                newCommentBody: '',
+            },
+            mounted() {
+                axios.get("{{ route('api.comments.index', ['post' => $post]) }}")
+                .then(response => {
+                    this.comments = response.data;
+                })
+                .catch(response => {
+                    console.log(response);
+                })
+            },
+            methods: {
+                createComment: function() {
+                    axios.post("{{ route('api.comments.store') }}", {
+                        body: this.newCommentBody
+                    })
+                    .then(response => {
+                        this.comments.push(response.data);
+                        this.newCommentBody = '';
+                    })
+                    .catch(response => {
+                        console.log(response);
+                    })
+                }
+            }
+        });
+    </script>
 @endsection

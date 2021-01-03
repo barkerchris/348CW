@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -13,10 +14,39 @@ class CommentController extends Controller
         return view('comments.index');
     }
 
-    public function apiIndex()
+    // public function apiIndex()
+    // {
+    //     $comments = Comment::all();
+    //     return $comments;
+    // }
+
+    public function apiIndex(Post $post)
     {
-        $comments = Comment::all();
+        $comments = Comment::get()->where('post_id', $post->id);
         return $comments;
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function apiStore(Request $request)
+    {
+        $validatedData = $request->validate([
+            'body' => 'required|string',
+            'post_id' => 'required|integer',
+        ]);
+
+
+        $c = new Comment;
+        $c->body = $validatedData['body'];
+        $c->user_id = auth()->user()->id;
+        $c->post_id = $validatedData['post_id'];
+        $c->save();
+
+        return $c;
     }
 
     /**
