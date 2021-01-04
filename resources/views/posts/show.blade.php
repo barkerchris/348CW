@@ -130,11 +130,6 @@
                         {{ $comment->created_at->diffForHumans() }}
                     </h6>
                     <p class="card-text mt-3">{{ $comment->body }}</p>
-                    {{-- @can('update', $comment)
-                        <div class="d-flex">
-                            <a class="btn btn-primary btn-lg btn-block" href="{{ route('attachments.create', ['id' => $comment->id, 'type' => Comment::class]) }}" role="button">ADD ATTACHMENTS</a>
-                        </div>
-                    @endcan --}}
                 </div>
                 @if($comment->attachments->isNotEmpty())
                     <div class="card-footer text-muted">
