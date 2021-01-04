@@ -3,11 +3,11 @@
 @section('title', 'Post')
 
 @section('content')
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" role="banner">
         <h1>Post {{ $post->id }}:</h1>
     </div>
 
-    <div class="card m-4 w-75 mx-auto">
+    <div class="card m-4 w-75 mx-auto" role="main">
         <div class="card-header">
             <div class="row my-2">
                 @can('update', $post)
@@ -74,12 +74,12 @@
     </div>
 
     <div id="com">
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center" role="complementary">
             <h1>Comments:</h1>
         </div>
 
         <div class="card m-4 w-75 mx-auto">   
-            <div class="card-body"> 
+            <div class="card-body" role="form"> 
                 <h4>Body:</h4>
                 <input type="text" class="form-control" id="input" placeholder="Enter body" v-model="newCommentBody">
                 <button @click="createComment" class="btn btn-primary btn-lg btn-block mt-4">SUBMIT</button>

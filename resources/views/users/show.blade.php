@@ -3,11 +3,11 @@
 @section('title', 'Profile')
 
 @section('content')
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" role="banner">
         <h1>Profile:</h1>
     </div>
 
-    <div class="card m-4 w-75 mx-auto">
+    <div class="card m-4 w-75 mx-auto" role="main">
         <div class="card-body">
             <p class="card-text mx-auto">
                 <img src="{{ asset('/storage/images/'.$user->profilePicture->avatar) }}" class="img-thumbnail rounded mx-auto d-block" alt="{{ $user->profilePicture->description }}" style="width:200px; height:200px;">
@@ -29,7 +29,7 @@
     
     @can('delete', $user)
     <div class="card m-4 w-75 mx-auto">
-        <form method="POST" action="{{ route('users.destroy', ['user' => $user]) }}">
+        <form method="POST" action="{{ route('users.destroy', ['user' => $user]) }}" role="form">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger btn-lg btn-block">DELETE</button>

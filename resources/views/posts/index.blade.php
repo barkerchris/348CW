@@ -3,7 +3,7 @@
 @section('title', 'Posts')
 
 @section('content')
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" role="banner">
         <h1>Posts:</h1>
     </div>
 
@@ -15,7 +15,7 @@
 
     @if(count($posts) > 0)
         @foreach($posts as $post)
-            <div class="card m-4 w-75 mx-auto">
+            <div class="card m-4 w-75 mx-auto" role="main">
                 <div class="card-body">
                     <h5 class="card-title"><a href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }}</a></h5>
                     <h6 class="card-subtitle mb-2 text-muted">

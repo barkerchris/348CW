@@ -3,15 +3,15 @@
 @section('title', 'Edit Profile')
 
 @section('content')
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" role="banner">
         <h1>Edit profile:</h1>
     </div>
 
-    <div class="card m-4 w-75 mx-auto">   
+    <div class="card m-4 w-75 mx-auto" role="main">   
         <div class="card-body">
             <img src="{{ asset('/storage/images/'.$user->profilePicture->avatar) }}" class="img-thumbnail rounded mx-auto d-block" alt="{{ $user->profilePicture->description }}" style="width:200px; height:200px;">
             
-            <form method="POST" action="{{ route('profilePictures.update', ['profilePicture' => $user->profilePicture]) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('profilePictures.update', ['profilePicture' => $user->profilePicture]) }}" enctype="multipart/form-data" role="form">
                 @csrf
                 @method('PATCH')
                 <div class="form-group">
@@ -25,7 +25,7 @@
                 <button type="submit" class="btn btn-primary btn-lg btn-block">SUBMIT IMAGE & DESCRIPTION</button>
             </form>
             <br>
-            <form method="POST" action="{{ route('users.update', ['user' => $user]) }}">
+            <form method="POST" action="{{ route('users.update', ['user' => $user]) }}" role="form">
                 @csrf
                 @method('PATCH')
                 <div class="form-group">

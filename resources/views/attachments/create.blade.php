@@ -3,13 +3,13 @@
 @section('title', 'Add Attachments')
 
 @section('content')
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" role="banner">
         <h1>Add attachments:</h1>
     </div>
     
-    <div class="card m-4 w-75 mx-auto">   
+    <div class="card m-4 w-75 mx-auto" role="main">   
         <div class="card-body"> 
-            <form method="POST" action="{{ route('attachments.store', ['id' => $id, 'type' => $type]) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('attachments.store', ['id' => $id, 'type' => $type]) }}" enctype="multipart/form-data" role="form">
                 @csrf
                 <div class="form-group">
                     <label for="files_id">Choose Files:</label>

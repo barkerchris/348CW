@@ -3,13 +3,13 @@
 @section('title', 'Create Post')
 
 @section('content')
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" role="banner">
         <h1>Create post:</h1>
     </div>
     
-    <div class="card m-4 w-75 mx-auto">   
+    <div class="card m-4 w-75 mx-auto" role="main">   
         <div class="card-body"> 
-            <form method="POST" action="{{ route('posts.store') }}">
+            <form method="POST" action="{{ route('posts.store') }}" role="form">
                 @csrf
                 <div class="form-group">
                     <label for="title_id">Title:</label>

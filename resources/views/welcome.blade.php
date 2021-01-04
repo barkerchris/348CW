@@ -3,11 +3,11 @@
 @section('title', 'Welcome')
 
 @section('content')
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" role="banner">
         <h1>Welcome:</h1>
     </div>
 
-    <div class="card m-4 w-75 mx-auto">
+    <div class="card m-4 w-75 mx-auto" role="main">
         <div class="card-body">
             <h5 class="card-title">{{ config('app.name') }}</h5>
             <p class="card-text">

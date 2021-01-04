@@ -3,13 +3,13 @@
 @section('title', 'Edit Post')
 
 @section('content')
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" role="banner">
         <h1>Edit post:</h1>
     </div>
     
-    <div class="card m-4 w-75 mx-auto">   
+    <div class="card m-4 w-75 mx-auto" role="main">   
         <div class="card-body"> 
-            <form method="POST" action="{{ route('posts.update', ['post' => $post]) }}">
+            <form method="POST" action="{{ route('posts.update', ['post' => $post]) }}" role="form">
                 @csrf
                 @method('PATCH')
                 <div class="form-group">

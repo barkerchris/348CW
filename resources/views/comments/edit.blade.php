@@ -3,13 +3,13 @@
 @section('title', 'Edit Comment')
 
 @section('content')
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" role="banner">
         <h1>Edit comment:</h1>
     </div>
     
-    <div class="card m-4 w-75 mx-auto">   
+    <div class="card m-4 w-75 mx-auto" role="main">   
         <div class="card-body"> 
-            <form method="POST" action="{{ route('comments.update', ['comment' => $comment]) }}">
+            <form method="POST" action="{{ route('comments.update', ['comment' => $comment]) }}" role="form">
                 @csrf
                 @method('PATCH')
                 <div class="form-group">
