@@ -50,7 +50,7 @@ class PostController extends Controller
         $p->user_id = auth()->user()->id;
         $p->save();
 
-        return redirect()->route('posts.index')->with('message', 'Post was created.');
+        return redirect()->route('posts.index')->with('message', 'Post created.');
     }
 
     /**
@@ -96,7 +96,7 @@ class PostController extends Controller
         $post->body = $validatedData['body'];
         $post->save();
 
-        return redirect()->route('posts.index')->with('message', 'Post was edited.');
+        return redirect()->route('posts.index')->with('message', 'Post edited.');
     }
 
     /**
@@ -109,6 +109,6 @@ class PostController extends Controller
     {
         $this->authorize('delete', $post);
         $post->delete();
-        return redirect()->route('posts.index')->with('message', 'Post was deleted.');
+        return redirect()->route('posts.index')->with('message', 'Post deleted.');
     }
 }

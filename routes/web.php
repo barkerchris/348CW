@@ -39,4 +39,6 @@ Route::get('/attachments/{id}/{type}/create', 'AttachmentController@create')->na
 Route::get('/attachments/{attachment}', 'AttachmentController@show')->name('attachments.show')->middleware(['auth', 'verified']);
 Route::delete('/attachments/{id}/{type}/{attachment}', 'AttachmentController@destroy')->name('attachments.destroy')->middleware(['auth', 'verified']);
 
-Route::get('/posts/{post}/comments', 'CommentController@page')->name('comments.page');
+Route::get('/comments/{comment}/edit', 'CommentController@edit')->name('comments.edit')->middleware(['auth', 'verified']);
+Route::patch('/comments/{comment}/edit', 'CommentController@update')->name('comments.update')->middleware(['auth', 'verified']);
+Route::delete('/comments/{comment}', 'CommentController@destroy')->name('comments.destroy')->middleware(['auth', 'verified']);

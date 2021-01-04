@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Post;
+use App\Comment;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PostPolicy
+class CommentPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class PostPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Post  $post
+     * @param  \App\Comment  $comment
      * @return mixed
      */
-    public function view(User $user, Post $post)
+    public function view(User $user, Comment $comment)
     {
         //
     }
@@ -41,26 +41,17 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        $lecturer = false;
-        $admin = false;
-        foreach ($user->roles as $role) {
-            if ($role->title == "Admin") {
-                $admin = true;
-            } elseif ($role->title === "Lecturer") {
-                $lecturer = true;
-            }
-        }
-        return ($lecturer || $admin);
+        //
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Post  $post
+     * @param  \App\Comment  $comment
      * @return mixed
      */
-    public function update(User $user, Post $post)
+    public function update(User $user, Comment $comment)
     {
         $admin = false;
         foreach ($user->roles as $role) {
@@ -68,17 +59,17 @@ class PostPolicy
                 $admin = true;
             }
         }
-        return ($user->id === $post->user_id) || $admin;
+        return ($user->id === $comment->user_id) || $admin;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Post  $post
+     * @param  \App\Comment  $comment
      * @return mixed
      */
-    public function delete(User $user, Post $post)
+    public function delete(User $user, Comment $comment)
     {
         $user = auth()->user();
         $admin = false;
@@ -87,17 +78,17 @@ class PostPolicy
                 $admin = true;
             }
         }
-        return ($user->id === $post->user_id) || $admin;
+        return ($user->id === $comment->user_id) || $admin;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Post  $post
+     * @param  \App\Comment  $comment
      * @return mixed
      */
-    public function restore(User $user, Post $post)
+    public function restore(User $user, Comment $comment)
     {
         //
     }
@@ -106,10 +97,10 @@ class PostPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Post  $post
+     * @param  \App\Comment  $comment
      * @return mixed
      */
-    public function forceDelete(User $user, Post $post)
+    public function forceDelete(User $user, Comment $comment)
     {
         //
     }

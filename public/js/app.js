@@ -49747,10 +49747,9 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-var app = new Vue({
-  el: '#app'
-});
+// const app = new Vue({
+//     el: '#app',
+// });
 
 /***/ }),
 
@@ -49886,8 +49885,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Laravel\Code\348CW\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Laravel\Code\348CW\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! c:\Laravel\Code\348CW\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! c:\Laravel\Code\348CW\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

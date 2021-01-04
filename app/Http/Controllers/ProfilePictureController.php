@@ -93,7 +93,7 @@ class ProfilePictureController extends Controller
 
         $profilePicture->save();
 
-        return redirect()->back()->with('message', 'Image was edited.');
+        return redirect()->back()->with('message', 'Image changed.');
     }
 
     /**

@@ -79,7 +79,7 @@ class UserController extends Controller
         $user->name = $validatedData['name'];
         $user->save();
 
-        return redirect()->back()->with('message', 'User was edited.');
+        return redirect()->back()->with('message', 'User edited.');
     }
 
     /**
@@ -92,6 +92,6 @@ class UserController extends Controller
     {
         $this->authorize('delete', $user);
         $user->delete();
-        return redirect()->route('welcome')->with('message', 'User was deleted.');
+        return redirect()->route('welcome')->with('message', 'User deleted.');
     }
 }

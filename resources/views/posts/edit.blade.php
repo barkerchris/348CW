@@ -20,10 +20,6 @@
                     <label for="body_id">Body:</label>
                     <input type="text" class="form-control" id="body_id" name="body" placeholder="Enter body" value="{{ $post->body }}">
                 </div>
-                <div class="form-group">
-                    <label for="files_id">Attachments:</label>
-                    <input type="file" class="form-control-file" id="files_id" name="files" value="{{ $post->attachments }}">
-                </div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">SUBMIT</button>
             </form>
         </div>
