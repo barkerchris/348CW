@@ -13,6 +13,9 @@ This project was made for my Web Apps module coursework. It is aimed at Lecturer
 
 ## Screenshots
 ![Posts](./images/posts.png)
+![Post](./images/post.png)
+![Verification](./images/verification.png)
+![Profile](./images/profile.png)
 
 ## Features
 List of features:
